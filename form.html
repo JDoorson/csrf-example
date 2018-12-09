@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>Message form</title>
+</head>
+<body>
+<div>
+    <h1>Send a message</h1>
+    <form action="/post" method="POST">
+        <label>Message</label><br/>
+        <textarea name="message"></textarea><br/>
+        {{ .csrfField }}
+        <input type="submit">
+    </form>
+</div>
+</body>
+</html>
