@@ -5,11 +5,7 @@ import (
 	"github.com/gorilla/mux"
 	"net/http"
 	"html/template"
-	"github.com/gorilla/sessions"
-	"os"
 )
-
-var store = sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY")))
 
 func main() {
 	r := mux.NewRouter()
@@ -33,6 +29,11 @@ func ShowMessageForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostMessageForm(w http.ResponseWriter, r *http.Request) {
+	println("[POST]")
+	println("URI: /post")
+	println("DATA: " + r.FormValue("message"))
+	println()
+
 	http.Redirect(w, r, "/thanks?msg=" + r.FormValue("message"), http.StatusSeeOther)
 }
 
